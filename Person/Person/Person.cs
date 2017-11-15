@@ -11,7 +11,7 @@ namespace Person
         public enum CombatStyle { Melee, Ranged, Arcane };
         public const int MAXHEALTH = 100;
         protected int _health { get; set; }
-        protected int _damage { get; set; }
+        protected int _damage;
         private string _name { get; set; }
         private bool _alive { get; set; }
 
@@ -47,6 +47,16 @@ namespace Person
             _alive = true;
         }
 
+        public void SetDamage(int damage)
+        {
+            _damage = damage;
+        }
+
+        public virtual int GetDamage()
+        {
+            return _damage;
+        }
+
         public void Damaged(int ammount)
         {
             _health -= ammount;
@@ -59,6 +69,16 @@ namespace Person
         public void Killed()
         {            
             _alive = false;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
         }
     }
 }

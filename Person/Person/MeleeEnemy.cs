@@ -9,5 +9,17 @@ namespace Person
     class MeleeEnemy:Person
     {
         private CombatStyle CombatType = CombatStyle.Melee;
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override getDamage
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
+
 }
