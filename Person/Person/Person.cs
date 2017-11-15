@@ -13,12 +13,14 @@ namespace Person
         protected int _health { get; set; }
         protected int _damage { get; set; }
         private string _name { get; set; }
+        private bool _alive { get; set; }
 
         public Person()
         {
             _health = MAXHEALTH;
             _name = "Nameless Hero";
             _damage = 5;
+            _alive = true;
         }
 
         public Person(string name, int damage, int health)
@@ -26,6 +28,7 @@ namespace Person
             _health = health;
             _name = name;
             _damage = damage;
+            _alive = true;
         }
 
         public Person(string name, int damage)
@@ -33,6 +36,7 @@ namespace Person
             _health = MAXHEALTH;
             _name = name;
             _damage = damage;
+            _alive = true;
         }
 
         public Person(string name)
@@ -40,9 +44,22 @@ namespace Person
             _health = MAXHEALTH;
             _name = name;
             _damage = 5;
+            _alive = true;
         }
 
+        public void Damaged(int ammount)
+        {
+            _health -= ammount;
+            if (_health <=0)
+            {
+                Killed();
+            }
+        }
 
+        public void Killed()
+        {            
+            _alive = false;
+        }
     }
 }
 

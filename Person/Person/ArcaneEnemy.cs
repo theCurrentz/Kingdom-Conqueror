@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Person
 {
-    class ArcaneEnemy1 : Person
+    class ArcaneEnemy : Person
     {
         private CombatStyle CombatType = CombatStyle.Arcane;
     }    

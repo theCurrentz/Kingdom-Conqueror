@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Person
 {
-    class MeleeEnemy1:Person
+    class MeleeEnemy:Person
     {
         private CombatStyle CombatType = CombatStyle.Melee;
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Person
 {
-    class RangedEnemy1 : Person
+    class RangedEnemy : Person
     {
         private CombatStyle CombatType = CombatStyle.Ranged;
     }
