@@ -20,7 +20,7 @@ namespace Person
             CombatType = CombatStyle.Melee;
         }
 
-        public MeleeEnemy(String name, int damage, int health = MAXHEALTH):base()
+        public MeleeEnemy(String name, int damage, int health = MAXHEALTH):base()  // the = MAXHEALTH is a placeholder incase we want them to have more or less during constuction
         {
             _name = name;
             _damage = damage;
