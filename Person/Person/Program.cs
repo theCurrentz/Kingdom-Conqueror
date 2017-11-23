@@ -11,7 +11,7 @@ namespace Person
         
         static void Main(string[] args)
         {
-            Person test = new Person("Larry", 10, 200);
+            Person test = new Person("", 10, 200);
         }
     }
 }

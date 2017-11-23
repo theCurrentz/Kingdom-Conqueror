@@ -73,7 +73,8 @@ namespace Person
             skillTwoUsed = true;
             if (random.Next(0, 101) > 12) //should be rolling a 0 to 100
             {
-                
+                _health += 10;
+                Console.WriteLine("Healed 10 hp.");
             }
             else
             {
