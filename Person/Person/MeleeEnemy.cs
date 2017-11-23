@@ -7,15 +7,47 @@ using System.Threading.Tasks;
 namespace Person
 {
     class MeleeEnemy:Person
-    {
-        private CombatStyle CombatType = CombatStyle.Melee;
+    {       
+        public MeleeEnemy():base()
+        {
+            CombatType = CombatStyle.Melee;
+        }
+
+        public MeleeEnemy(String name, int damage):base()
+        {
+            _name = name;
+            _damage = damage;
+            CombatType = CombatStyle.Melee;
+        }
+
+        public MeleeEnemy(String name, int damage, int health = MAXHEALTH):base()
+        {
+            _name = name;
+            _damage = damage;
+            _health = health;
+            CombatType = CombatStyle.Melee;
+        }
+
+        // Calculates if the target is weak to attacker
+        public int CalculateDamage(Person enemy)
+        {
+
+            if (enemy.GetCombatType() == (CombatStyle.Arcane))
+            {
+                int newDamage = _damage + 2;
+                return newDamage;
+            }
+            else
+            {
+                return _damage;
+            }
+        }
 
         public override bool Equals(object obj)
         {
             return base.Equals(obj);
         }
-
-        public override getDamage
+        
         public override string ToString()
         {
             return base.ToString();

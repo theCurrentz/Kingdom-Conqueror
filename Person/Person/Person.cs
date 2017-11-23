@@ -8,12 +8,19 @@ namespace Person
 {
     class Person
     {
+        public Random random = new Random();
         public enum CombatStyle { Melee, Ranged, Arcane };
         public const int MAXHEALTH = 100;
         protected int _health { get; set; }
         protected int _damage;
-        private string _name { get; set; }
+        protected string _name { get; set; }
         private bool _alive { get; set; }
+
+        // to make each skill useable only once (unless energy would be better for this?)
+        protected bool skillOneUsed = false;
+        protected bool skillTwoUsed = false;
+
+        protected CombatStyle CombatType; // added this to person because all subclasses are to be a type of this;
 
         public Person()
         {
@@ -21,6 +28,7 @@ namespace Person
             _name = "Nameless Hero";
             _damage = 5;
             _alive = true;
+
         }
 
         public Person(string name, int damage, int health)
@@ -29,6 +37,7 @@ namespace Person
             _name = name;
             _damage = damage;
             _alive = true;
+            CombatType = CombatStyle.Melee;
         }
 
         public Person(string name, int damage)
@@ -37,6 +46,7 @@ namespace Person
             _name = name;
             _damage = damage;
             _alive = true;
+            CombatType = CombatStyle.Melee;
         }
 
         public Person(string name)
@@ -45,6 +55,17 @@ namespace Person
             _name = name;
             _damage = 5;
             _alive = true;
+            CombatType = CombatStyle.Melee;
+        }
+
+        public void SetCombatType(CombatStyle style)
+        {
+            CombatType = style;
+        }
+
+        public CombatStyle GetCombatType()
+        {
+            return CombatType;
         }
 
         public void SetDamage(int damage)
