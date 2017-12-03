@@ -5,28 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kingdom_Conqueror"
         mc:Ignorable="d"
-        Title="Kingdom Conqueror" Height="350" Width="525">
+        Title="Kingdom Conqueror" Height="300" Width="600">
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}" x:Key="ImageButtonStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ContentPresenter/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush  Color="White" x:Key="txtColor" />
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="{DynamicResource txtColor}" />
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Image x:Name="Background" HorizontalAlignment="Left" Height="320" VerticalAlignment="Top" Width="517" Stretch="UniformToFill">
+        <Image x:Name="Background" HorizontalAlignment="Left" VerticalAlignment="Top"  Stretch="UniformToFill">
             <Image.Source>
-                <BitmapImage UriSource="/CharacterSprites/background-hills.png"/>
+                <BitmapImage UriSource="background-hills.png"/>
             </Image.Source>
         </Image>
-        <Image x:Name="Archer" HorizontalAlignment="Left" Height="100" Margin="39,143,0,0" VerticalAlignment="Top" Width="100">
-            <Image.Source>
-                <BitmapImage UriSource="/CharacterSprites/Archer/Stand/0.png"/>
-            </Image.Source>
-        </Image>
-        <Image x:Name="Warrior" HorizontalAlignment="Left" Height="100" Margin="199,143,0,0" VerticalAlignment="Top" Width="100">
-            <Image.Source>
-                <BitmapImage UriSource="/CharacterSprites/Knight/Stand/0.png"/>
-            </Image.Source>
-        </Image>
-        <Image x:Name="Wizard" HorizontalAlignment="Left" Height="100" Margin="382,143,0,0" VerticalAlignment="Top" Width="100">
-            <Image.Source>
-                <BitmapImage UriSource="/CharacterSprites/IceWizard/Stand/0.png"/>
-            </Image.Source>
-        </Image>
+
+        <Button x:Name="Archer" Click="Archer_Click" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" Height="100" Margin="106,142,0,0" VerticalAlignment="Top" Width="100">
+            <Image>
+                <Image.Source>
+                    <BitmapImage UriSource="3.png"/>
+                </Image.Source>
+            </Image>
+        </Button>
+
+        <Button x:Name="Warrior" Click="Warrior_Click" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" Height="100" Margin="243,153,0,0" VerticalAlignment="Top" Width="100" >
+            <Image>
+                <Image.Source>
+                    <BitmapImage UriSource="2.png"/>
+                </Image.Source>
+            </Image>
+        </Button>
+
+        <Button x:Name="Wizard" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" Height="100" Margin="384,134,0,0" VerticalAlignment="Top" Width="100" Click="Wizard_Click">
+            <Image>
+                <Image.Source>
+                    <BitmapImage UriSource="1.png"/>
+                </Image.Source>
+            </Image>
+        </Button>
+        <TextBox x:Name="Instructions" Background="#00000000" Text="Choose your hero." HorizontalAlignment="Center" Height="72" Margin="84,49,87,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="421" BorderThickness="0" SnapsToDevicePixels="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
 
     </Grid>
 </Window>

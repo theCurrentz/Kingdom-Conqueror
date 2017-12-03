@@ -8,64 +8,17 @@ namespace Kingdom_Conqueror
 {
     class NPC
     {
-        public Random random = new Random();
-        public enum CombatStyle { Melee, Ranged, Arcane };
-        public const int MAXHEALTH = 100;
-        protected int _health { get; set; }
         protected int _damage;
+        protected int _health { get; set; }
         protected string _name { get; set; }
         private bool _alive { get; set; }
 
-        // to make each skill useable only once (unless energy would be better for this?)
-        protected bool skillOneUsed = false;
         protected bool skillTwoUsed = false;
-
-        protected CombatStyle CombatType; // added this to person because all subclasses are to be a type of this;
 
         public NPC()
         {
-            _health = MAXHEALTH;
-            _name = "";
-            _damage = 5;
             _alive = true;
 
-        }
-
-        public NPC(string name, int damage, int health)
-        {
-            _health = health;
-            _name = name;
-            _damage = damage;
-            _alive = true;
-            CombatType = CombatStyle.Melee;
-        }
-
-        public NPC(string name, int damage)
-        {
-            _health = MAXHEALTH;
-            _name = name;
-            _damage = damage;
-            _alive = true;
-            CombatType = CombatStyle.Melee;
-        }
-
-        public NPC(string name)
-        {
-            _health = MAXHEALTH;
-            _name = name;
-            _damage = 5;
-            _alive = true;
-            CombatType = CombatStyle.Melee;
-        }
-
-        public void SetCombatType(CombatStyle style)
-        {
-            CombatType = style;
-        }
-
-        public CombatStyle GetCombatType()
-        {
-            return CombatType;
         }
 
         public void SetDamage(int damage)
