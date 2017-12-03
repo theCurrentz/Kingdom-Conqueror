@@ -9,9 +9,8 @@ namespace Kingdom_Conqueror
     class NPC
     {
         protected int _damage;
-        protected int _health { get; set; }
-        protected string _name { get; set; }
-        private bool _alive { get; set; }
+        public int _health { get; set; }
+        protected bool _alive { get; set; }
 
         protected bool skillTwoUsed = false;
 
@@ -21,14 +20,9 @@ namespace Kingdom_Conqueror
 
         }
 
-        public void SetDamage(int damage)
+        public void Attack(NPC enemy)
         {
-            _damage = damage;
-        }
-
-        public virtual int GetDamage()
-        {
-            return _damage;
+            enemy._health -= this._damage;
         }
 
         public void Damaged(int ammount)

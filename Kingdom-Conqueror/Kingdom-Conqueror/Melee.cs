@@ -10,7 +10,16 @@ namespace Kingdom_Conqueror
     {
         public Melee():base()
         {
+            this._alive = true;
             this._health = 140;
+            this._damage = 10;
+        }
+
+
+        // skill
+        public void Pummel(NPC enemy)
+        {
+            enemy._health -= this._damage + 25;
         }
 
 

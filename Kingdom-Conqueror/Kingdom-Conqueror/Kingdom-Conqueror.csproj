@@ -72,7 +72,6 @@
   <ItemGroup>
     <Compile Include="Melee.cs" />
     <Compile Include="NPC.cs" />
-    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -109,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Plunder_Battle_Background.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

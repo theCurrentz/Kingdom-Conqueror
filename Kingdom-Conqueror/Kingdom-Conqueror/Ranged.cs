@@ -10,75 +10,15 @@ namespace Kingdom_Conqueror
     {
         public Ranged() : base()
         {
-            CombatType = CombatStyle.Ranged;
+            _alive = true;
+            _health = 100;
+            _damage = 25;
         }
 
-        public Ranged(String name, int damage):base()
+        // skill
+        public void DualShot(NPC enemy)
         {
-            _name = name;
-            _damage = damage;
-            CombatType = CombatStyle.Ranged;
-        }
-
-        public Ranged(String name, int damage, int health = MAXHEALTH):base()
-        {
-            _name = name;
-            _damage = damage;
-            _health = health;
-            CombatType = CombatStyle.Ranged;
-        }
-
-        // Calculates if the target is weak to attacker (not sure if it was better to add to person class)
-        public int CalculateDamage(NPC enemy)
-        {
-
-            if (enemy.GetCombatType() == (CombatStyle.Melee))
-            {
-                int newDamage = _damage + 2;
-                return newDamage;
-            }
-            else
-            {
-                return _damage;
-            }
-        }
-
-        // basic attack
-        public int Shoot(NPC enemy)
-        {
-            if (random.Next(0, 101) > 15) //should be rolling a 0 to 100
-            {
-                return (CalculateDamage(enemy));
-            }
-            else return 0;
-        }
-
-        // skill 1
-        public int DualShot(NPC enemy)
-        {
-            skillOneUsed = true;
-            if (random.Next(0, 101) > 40) //should be rolling a 0 to 100
-            {
-                return (CalculateDamage(enemy) * 2);
-            }
-            else
-            {
-                return 0; // This would mean they missed
-            }
-        }
-
-        // skill 2
-        public Boolean Poison(NPC enemy)
-        {
-            skillTwoUsed = true;
-            if (random.Next(0, 101) > 50) //should be rolling a 0 to 100
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            enemy._health -= this._damage + 10;
         }
 
         public override bool Equals(object obj)
