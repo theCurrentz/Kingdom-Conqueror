@@ -12,7 +12,7 @@ namespace Kingdom_Conqueror
         public int _health { get; set; }
         public bool _alive { get; set; }
 
-        protected bool skillTwoUsed = false;
+        public bool skillTwoUsed = false;
 
         public NPC()
         {
