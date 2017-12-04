@@ -32,7 +32,7 @@ namespace Kingdom_Conqueror
         Ranged enemy2 = new Ranged();
         Caster enemy3 = new Caster();
         NPC player = null;
-        NPC target; // to help with the attack section
+        NPC target;
 
 
 
@@ -60,7 +60,7 @@ namespace Kingdom_Conqueror
         public void Initialize()
         {
             loadEnemy();
-            Instructions.Text = "Incoming Enemy. Use an ability to fight.";
+            Instructions.Text = "Battle Begins.";
             PlayerHP.Text = player._health + "HP";
             Attack.Visibility = Visibility.Visible;
             Ability.Visibility = Visibility.Visible;
@@ -126,6 +126,10 @@ namespace Kingdom_Conqueror
                     EnemyHP.Text = enemy3._health + "HP";
                     target = enemy3;
                 }
+                else
+                {
+                    endGame();
+                }
             }
             else if (player is Ranged)
             {
@@ -142,6 +146,10 @@ namespace Kingdom_Conqueror
                     Wizard.Margin = new Thickness(320, 172, 0, 0);
                     EnemyHP.Text = enemy3._health + "HP";
                     target = enemy3;
+                }
+                else
+                {
+                    endGame();
                 }
 
             }
@@ -161,12 +169,22 @@ namespace Kingdom_Conqueror
                     EnemyHP.Text = enemy2._health + "HP";
                     target = enemy2;
                 }
+                else
+                {
+                    endGame();
+                }
 
             }
         }
 
         private void updateHealth(NPC enemy)
         {
+            enemy.Killed();
+            player.Killed();
+            if (!player._alive)
+            {
+                    endGame();
+            }
             PlayerHP.Text = player._health + "HP";
             EnemyHP.Text = target._health + "HP";
         }
@@ -177,7 +195,19 @@ namespace Kingdom_Conqueror
             updateHealth(target);
             if (!target._alive)
             {
-                loadEnemy();
+                if(target is Melee)
+                {
+                    Warrior.Visibility = Visibility.Collapsed;
+                } else if(target is Ranged)
+                {
+                    Wizard.Visibility = Visibility.Collapsed;
+                }
+                else if (target is Caster)
+                {
+                    Archer.Visibility = Visibility.Collapsed;
+                }
+
+                Initialize();
             }
             else
             {                
@@ -189,7 +219,15 @@ namespace Kingdom_Conqueror
         {          
             player.Skill(target);
             updateHealth(target);
-            NPC_Attack();
+            if (!target._alive)
+            {
+                Initialize();
+            }
+            else
+            {
+                NPC_Attack();
+            }
+
         }
 
         private void NPC_Attack()
@@ -204,6 +242,19 @@ namespace Kingdom_Conqueror
                 target.Attack(player);
                 updateHealth(target);
             }
+        }
+
+        private void endGame()
+        {
+            Instructions.Text = "Game Over.";
+            Archer.Visibility = Visibility.Collapsed;
+            Warrior.Visibility = Visibility.Collapsed;
+            Wizard.Visibility = Visibility.Collapsed;
+            Archer.Visibility = Visibility.Collapsed;
+            PlayerHP.Visibility = Visibility.Collapsed;
+            EnemyHP.Visibility = Visibility.Collapsed;
+            Attack.Visibility = Visibility.Collapsed;
+            Ability.Visibility = Visibility.Collapsed;
         }
     }
 

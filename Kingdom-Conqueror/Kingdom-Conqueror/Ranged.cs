@@ -25,7 +25,7 @@ namespace Kingdom_Conqueror
         // DualShot
         public override void Skill(NPC enemy)
         {
-            enemy.Damaged(this._damage + 10);
+            enemy._health -= this._damage + 10;
         }
 
         public override bool Equals(object obj)

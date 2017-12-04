@@ -23,7 +23,7 @@ namespace Kingdom_Conqueror
         // Heal
         public override void Skill(NPC enemy)   //still targets enemy so it can be an override vs overload method
         {
-            _health += 40;
+            this._health += 40;
         }
 
         public override bool Equals(object obj)

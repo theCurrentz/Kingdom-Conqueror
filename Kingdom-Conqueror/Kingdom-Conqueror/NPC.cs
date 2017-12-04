@@ -27,26 +27,21 @@ namespace Kingdom_Conqueror
 
         public void Attack(NPC enemy)
         {
-            enemy.Damaged(_damage);
+            enemy._health -= this._damage;
         }
 
-        public void Damaged(int ammount)
-        {
-            _health = _health - ammount;
-            if (_health <= 0)
-            {
-                Killed();
-            }
-        }
 
         public virtual void Skill(NPC enemy)
         {
-            enemy.Damaged(this._damage);
+            enemy._health -= this._damage;
         }
 
         public void Killed()
         {
-            _alive = false;
+            if (this._health <= 0)
+            {
+                this._alive = false;
+            }
         }
 
         public override string ToString()
