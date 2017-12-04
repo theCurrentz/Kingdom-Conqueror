@@ -195,16 +195,16 @@ namespace Kingdom_Conqueror
             updateHealth(target);
             if (!target._alive)
             {
-                if(target is Melee)
+                if(target.Equals(enemy1))
                 {
                     Warrior.Visibility = Visibility.Collapsed;
-                } else if(target is Ranged)
-                {
-                    Wizard.Visibility = Visibility.Collapsed;
-                }
-                else if (target is Caster)
+                } else if(target.Equals(enemy2))
                 {
                     Archer.Visibility = Visibility.Collapsed;
+                }
+                else if (target.Equals(enemy3))
+                {
+                    Wizard.Visibility = Visibility.Collapsed;
                 }
 
                 Initialize();
