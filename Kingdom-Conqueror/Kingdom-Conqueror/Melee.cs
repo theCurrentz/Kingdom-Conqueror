@@ -14,9 +14,13 @@ namespace Kingdom_Conqueror
             this._health = 140;
             this._damage = 10;
         }
+        public override void ResetHealth()
+        {
+            this._health = 140;
+        }
 
         // Pummel
-        public void Skill(NPC enemy)
+        public override void Skill(NPC enemy)
         {
             enemy._health -= this._damage + 25;
         }

@@ -20,6 +20,11 @@ namespace Kingdom_Conqueror
 
         }
 
+        public virtual void ResetHealth()
+        {
+            _health = 100;
+        }
+
         public void Attack(NPC enemy)
         {
             enemy.Damaged(_damage);
@@ -34,7 +39,7 @@ namespace Kingdom_Conqueror
             }
         }
 
-        public void Skill(NPC enemy)
+        public virtual void Skill(NPC enemy)
         {
             enemy.Damaged(this._damage);
         }

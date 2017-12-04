@@ -109,6 +109,7 @@ namespace Kingdom_Conqueror
 
         public void loadEnemy()
         {
+            player.ResetHealth(); 
             if (player is Melee)
             {
                 if (enemy2._alive)
@@ -174,8 +175,14 @@ namespace Kingdom_Conqueror
         {
             player.Attack(target);
             updateHealth(target);
-            //call a npc attack method here
-            NPC_Attack();
+            if (!target._alive)
+            {
+                loadEnemy();
+            }
+            else
+            {                
+                NPC_Attack();
+            }
         }
 
         private void Ability_Click(object sender, RoutedEventArgs e)

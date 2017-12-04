@@ -15,8 +15,13 @@ namespace Kingdom_Conqueror
             this._damage = 30;
         }
 
+        public override void ResetHealth()
+        {
+            this._health = 90;
+        }
+
         // Heal
-        public void Skill()
+        public override void Skill(NPC enemy)   //still targets enemy so it can be an override vs overload method
         {
             _health += 40;
         }

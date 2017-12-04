@@ -15,8 +15,15 @@ namespace Kingdom_Conqueror
             _damage = 25;
         }
 
+        public override void ResetHealth()
+        {
+            this._health = 100;
+        }
+
+
+
         // DualShot
-        public void Skill(NPC enemy)
+        public override void Skill(NPC enemy)
         {
             enemy.Damaged(this._damage + 10);
         }
