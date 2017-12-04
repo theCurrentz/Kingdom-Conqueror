@@ -182,6 +182,7 @@ namespace Kingdom_Conqueror
         {          
             player.Skill(target);
             updateHealth(target);
+            NPC_Attack();
         }
 
         private void NPC_Attack()
