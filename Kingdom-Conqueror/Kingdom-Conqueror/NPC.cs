@@ -22,7 +22,7 @@ namespace Kingdom_Conqueror
 
         public void Attack(NPC enemy)
         {
-            enemy._health -= this._damage;
+            enemy.Damaged(this._damage);
         }
 
         public void Damaged(int ammount)
