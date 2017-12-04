@@ -22,7 +22,7 @@ namespace Kingdom_Conqueror
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         int selection = 0;
@@ -32,8 +32,9 @@ namespace Kingdom_Conqueror
         Ranged enemy2 = new Ranged();
         Caster enemy3 = new Caster();
         NPC player = null;
+        NPC target = null; // to help with the attack section
 
-        
+
 
         private void Warrior_Click(object sender, RoutedEventArgs e)
         {
@@ -108,6 +109,7 @@ namespace Kingdom_Conqueror
 
         public void loadEnemy()
         {
+            NPC target = null;
             if (player is Melee)
             {
                 if (enemy2._alive)
@@ -115,12 +117,14 @@ namespace Kingdom_Conqueror
                     Archer.Visibility = Visibility.Visible;
                     Archer.Margin = new Thickness(320, 172, 0, 0);
                     EnemyHP.Text = enemy2._health + "HP";
+                    target = enemy2;
 
                 } else if (enemy3._alive)
                 {
                     Wizard.Visibility = Visibility.Visible;
                     Wizard.Margin = new Thickness(320, 172, 0, 0);
                     EnemyHP.Text = enemy3._health + "HP";
+                    target = enemy3;
                 }
             }
             else if (player is Ranged)
@@ -130,12 +134,14 @@ namespace Kingdom_Conqueror
                     Warrior.Visibility = Visibility.Visible;
                     Warrior.Margin = new Thickness(320, 172, 0, 0);
                     EnemyHP.Text = enemy2._health + "HP";
+                    target = enemy1;
                 }
                 else if (enemy3._alive)
                 {
                     Wizard.Visibility = Visibility.Visible;
                     Wizard.Margin = new Thickness(320, 172, 0, 0);
                     EnemyHP.Text = enemy3._health + "HP";
+                    target = enemy3;
                 }
 
             }
@@ -146,12 +152,14 @@ namespace Kingdom_Conqueror
                     Warrior.Visibility = Visibility.Visible;
                     Warrior.Margin = new Thickness(320, 172, 0, 0);
                     EnemyHP.Text = enemy1._health + "HP";
+                    target = enemy1;
                 }
                 else if (enemy2._alive)
                 {
                     Archer.Visibility = Visibility.Visible;
                     Archer.Margin = new Thickness(320, 172, 0, 0);
                     EnemyHP.Text = enemy2._health + "HP";
+                    target = enemy2;
                 }
 
             }
@@ -165,12 +173,12 @@ namespace Kingdom_Conqueror
 
         private void Attack_Click(object sender, RoutedEventArgs e)
         {
-
+            player.Attack(target);                
         }
 
         private void Ability_Click(object sender, RoutedEventArgs e)
-        {
-
+        {          
+            player.Skill(target);            
         }
     }
 

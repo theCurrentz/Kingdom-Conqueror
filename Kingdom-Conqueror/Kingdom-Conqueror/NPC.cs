@@ -34,6 +34,11 @@ namespace Kingdom_Conqueror
             }
         }
 
+        public void Skill(NPC enemy)
+        {
+            enemy._health -= this._damage;
+        }
+
         public void Killed()
         {
             _alive = false;

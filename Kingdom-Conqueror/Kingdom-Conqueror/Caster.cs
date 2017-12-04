@@ -15,8 +15,8 @@ namespace Kingdom_Conqueror
             this._damage = 30;
         }
 
-        // skill
-        public void Heal()
+        // Heal
+        public void Skill()
         {
             _health += 40;
         }

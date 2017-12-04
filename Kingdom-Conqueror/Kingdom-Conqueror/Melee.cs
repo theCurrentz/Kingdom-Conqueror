@@ -15,9 +15,8 @@ namespace Kingdom_Conqueror
             this._damage = 10;
         }
 
-
-        // skill
-        public void Pummel(NPC enemy)
+        // Pummel
+        public void Skill(NPC enemy)
         {
             enemy._health -= this._damage + 25;
         }

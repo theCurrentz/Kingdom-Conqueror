@@ -15,8 +15,8 @@ namespace Kingdom_Conqueror
             _damage = 25;
         }
 
-        // skill
-        public void DualShot(NPC enemy)
+        // DualShot
+        public void Skill(NPC enemy)
         {
             enemy._health -= this._damage + 10;
         }

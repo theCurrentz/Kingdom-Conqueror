@@ -51,7 +51,11 @@
                 </Image.Source>
             </Image>
         </Button>
-        <TextBox x:Name="Instructions" Background="Transparent" Text="Choose your hero." HorizontalAlignment="Center" Height="72" Margin="196,90,218,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" BorderThickness="0" SnapsToDevicePixels="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+        <TextBox x:Name="Instructions" Background="Transparent" Text="Choose your hero." HorizontalAlignment="Center" Height="72" Margin="196,90,218,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" BorderThickness="0" SnapsToDevicePixels="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18">
+            <TextBox.Effect>
+                <DropShadowEffect BlurRadius="6" ShadowDepth="3"/>
+            </TextBox.Effect>
+        </TextBox>
         <TextBox x:Name="PlayerHP" Background="Transparent" HorizontalAlignment="Left" Height="23" Margin="81,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderThickness="0" SnapsToDevicePixels="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" />
         <TextBox x:Name="EnemyHP" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="23" Margin="384,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="18"/>
 
