@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -121,6 +122,7 @@ namespace Kingdom_Conqueror
 
                 } else if (enemy3._alive)
                 {
+                    Archer.Visibility = Visibility.Collapsed;                                      
                     Wizard.Visibility = Visibility.Visible;
                     Wizard.Margin = new Thickness(320, 172, 0, 0);
                     EnemyHP.Text = enemy3._health + "HP";
@@ -142,6 +144,7 @@ namespace Kingdom_Conqueror
                 }
                 else if (enemy3._alive)
                 {
+                    Warrior.Visibility = Visibility.Collapsed;                    
                     Wizard.Visibility = Visibility.Visible;
                     Wizard.Margin = new Thickness(320, 172, 0, 0);
                     EnemyHP.Text = enemy3._health + "HP";
@@ -164,6 +167,7 @@ namespace Kingdom_Conqueror
                 }
                 else if (enemy2._alive)
                 {
+                    Warrior.Visibility = Visibility.Collapsed;
                     Archer.Visibility = Visibility.Visible;
                     Archer.Margin = new Thickness(320, 172, 0, 0);
                     EnemyHP.Text = enemy2._health + "HP";
@@ -191,7 +195,10 @@ namespace Kingdom_Conqueror
 
         private void Attack_Click(object sender, RoutedEventArgs e)
         {
-            player.Attack(target);
+            if(!player.Attack(target))
+            {                                     //displays that the attack/skill missed
+                MissedMessAsync();
+            }
             updateHealth(target);
             if (!target._alive)
             {
@@ -206,7 +213,6 @@ namespace Kingdom_Conqueror
                 {
                     Wizard.Visibility = Visibility.Collapsed;
                 }
-
                 Initialize();
             }
             else
@@ -217,7 +223,7 @@ namespace Kingdom_Conqueror
 
         private void Ability_Click(object sender, RoutedEventArgs e)
         {
-            if (!player.skillused)
+            if (!player.skillUsed)
             {
                 player.Skill(target);
             }
@@ -235,16 +241,36 @@ namespace Kingdom_Conqueror
 
         private void NPC_Attack()
         {
-            if (target.skillused == false && target._health < 40)
+            if (target.skillUsed == false && target._health < 40)
             {
-                target.Skill(player);
+                if(!target.Skill(player))
+                {
+                    MissedMessAsync();
+                }
                 updateHealth(target);
             }
             else
             {
-                target.Attack(player);
+                if(!target.Attack(player))
+                {
+                    MissedMessAsync();
+                }
                 updateHealth(target);
             }
+        }
+
+        private async Task HitMessage()
+        {
+            HitMessage_.Visibility = Visibility.Visible;      
+            await Task.Delay(2000);
+            HitMessage_.Visibility = Visibility.Hidden;
+        }
+
+        private async Task MissedMessAsync()
+        {
+            MissedMessage.Visibility = Visibility.Visible;      //displays that the attack/skill missed
+            await Task.Delay(2000);
+            MissedMessage.Visibility = Visibility.Hidden;
         }
 
         private void endGame()

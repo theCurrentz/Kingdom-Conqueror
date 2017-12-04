@@ -73,5 +73,7 @@
                 </Image.Source>
             </Image>
         </Button>
+        <TextBlock x:Name="MissedMessage" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Missed!" VerticalAlignment="Top" Margin="258,214,0,0" Foreground="Red" FontFamily="Old English Text MT" FontSize="22" Visibility="Hidden"/>
+        <TextBlock x:Name="HitMessage_" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Hit!" VerticalAlignment="Top" Margin="258,213,0,0" Foreground="Red" FontFamily="Old English Text MT" FontSize="22" Visibility="Hidden"/>
     </Grid>
 </Window>

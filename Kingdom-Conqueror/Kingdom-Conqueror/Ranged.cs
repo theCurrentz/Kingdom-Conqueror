@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Kingdom_Conqueror
@@ -18,14 +19,22 @@ namespace Kingdom_Conqueror
         public override void ResetHealth()
         {
             this._health = 100;
+            skillUsed = false;
         }
 
-
-
         // DualShot
-        public override void Skill(NPC enemy)
+        public override bool Skill(NPC enemy)
         {
-            enemy._health -= this._damage + 10;
+            if (random.Next(0, 100) > 10)
+            {
+                enemy._health -= this._damage + 10;
+                skillUsed = true;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override bool Equals(object obj)

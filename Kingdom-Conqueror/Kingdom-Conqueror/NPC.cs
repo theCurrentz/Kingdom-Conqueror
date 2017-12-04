@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Kingdom_Conqueror
 {
     class NPC
     {
+        public Random random = new Random();
+        public MainWindow win;
         protected int _damage;
         public int _health { get; set; }
         public bool _alive { get; set; }
 
-        public bool skillTwoUsed = false;
+        public bool skillUsed = false;
 
         public NPC()
         {
@@ -23,17 +26,27 @@ namespace Kingdom_Conqueror
         public virtual void ResetHealth()
         {
             _health = 100;
+            skillUsed = false;
         }
 
-        public void Attack(NPC enemy)
+        public bool Attack(NPC enemy)
         {
-            enemy._health -= this._damage;
+            if (random.Next(0, 100) > 5)
+            {
+                enemy._health -= this._damage;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
-        public virtual void Skill(NPC enemy)
+        public virtual bool Skill(NPC enemy)
         {
             enemy._health -= this._damage;
+            return true;
         }
 
         public void Killed()
