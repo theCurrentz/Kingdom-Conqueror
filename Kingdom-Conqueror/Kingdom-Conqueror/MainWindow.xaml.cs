@@ -229,7 +229,14 @@ namespace Kingdom_Conqueror
         {
             if (!player.skillUsed)
             {
-                player.Skill(target);
+                if(!player.Skill(target))
+                {                                     //displays that the attack/skill missed
+                    MissedMessAsync();
+                }
+                else
+                {
+                    HitMessage();
+                }
             }
             updateHealth(target);
             if (!target._alive)
@@ -274,14 +281,14 @@ namespace Kingdom_Conqueror
         private async Task HitMessage()
         {
             HitMessage_.Visibility = Visibility.Visible;      
-            await Task.Delay(2000);
+            await Task.Delay(1000);
             HitMessage_.Visibility = Visibility.Hidden;
         }
 
         private async Task MissedMessAsync()
         {
             MissedMessage.Visibility = Visibility.Visible;      //displays that the attack/skill missed
-            await Task.Delay(2000);
+            await Task.Delay(1000);
             MissedMessage.Visibility = Visibility.Hidden;
         }
 
