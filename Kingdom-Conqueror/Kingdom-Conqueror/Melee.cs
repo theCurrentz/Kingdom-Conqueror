@@ -17,12 +17,17 @@ namespace Kingdom_Conqueror
         public override void ResetHealth()
         {
             this._health = 140;
+            skillused = false;
         }
 
         // Pummel
         public override void Skill(NPC enemy)
         {
-            enemy._health -= this._damage + 25;
+            if (random.Next(0, 100) > 5)
+            {
+                enemy._health -= this._damage + 25;
+                skillused = true;
+            }
         }
 
 

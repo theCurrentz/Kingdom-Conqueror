@@ -186,15 +186,18 @@ namespace Kingdom_Conqueror
         }
 
         private void Ability_Click(object sender, RoutedEventArgs e)
-        {          
-            player.Skill(target);
+        {
+            if (!player.skillused)
+            {
+                player.Skill(target);
+            }
             updateHealth(target);
             NPC_Attack();
         }
 
         private void NPC_Attack()
         {
-            if (target.skillTwoUsed == false && target._health < 40)
+            if (target.skillused == false && target._health < 40)
             {
                 target.Skill(player);
                 updateHealth(target);

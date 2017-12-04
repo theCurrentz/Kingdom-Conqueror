@@ -8,11 +8,12 @@ namespace Kingdom_Conqueror
 {
     class NPC
     {
+        public Random random = new Random();
         protected int _damage;
         public int _health { get; set; }
         public bool _alive { get; set; }
 
-        public bool skillTwoUsed = false;
+        public bool skillused = false;
 
         public NPC()
         {
@@ -23,11 +24,20 @@ namespace Kingdom_Conqueror
         public virtual void ResetHealth()
         {
             _health = 100;
+            skillused = false;
         }
 
         public void Attack(NPC enemy)
         {
-            enemy.Damaged(_damage);
+
+            if (random.Next(0, 100) > 10)
+            {
+                enemy.Damaged(_damage);
+            }
+            else
+            {
+                //throw a missed message?
+            }
         }
 
         public void Damaged(int ammount)

@@ -18,12 +18,17 @@ namespace Kingdom_Conqueror
         public override void ResetHealth()
         {
             this._health = 90;
+            skillused = false;
         }
 
         // Heal
         public override void Skill(NPC enemy)   //still targets enemy so it can be an override vs overload method
         {
-            _health += 40;
+            if (random.Next(0, 100) > 5)
+            {
+                _health += 40;
+                skillused = true;
+            }
         }
 
         public override bool Equals(object obj)

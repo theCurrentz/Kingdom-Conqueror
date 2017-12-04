@@ -18,6 +18,7 @@ namespace Kingdom_Conqueror
         public override void ResetHealth()
         {
             this._health = 100;
+            skillused = false;
         }
 
 
@@ -25,7 +26,11 @@ namespace Kingdom_Conqueror
         // DualShot
         public override void Skill(NPC enemy)
         {
-            enemy.Damaged(this._damage + 10);
+            if (random.Next(0, 100) > 5)
+            {
+                enemy.Damaged(this._damage + 10);
+                skillused = true;
+            }
         }
 
         public override bool Equals(object obj)
