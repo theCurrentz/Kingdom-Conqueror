@@ -25,74 +25,153 @@ namespace Kingdom_Conqueror
             InitializeComponent();
         }
 
-        int warriorClick = 0;
-        int wizardClick = 0;
-        int archerClick = 0;
+        int selection = 0;
 
+        Game match = new Game();
         Melee enemy1 = new Melee();
-        Caster enemy2 = new Caster();
+        Ranged enemy2 = new Ranged();
         Caster enemy3 = new Caster();
+        NPC player = null;
 
+        
 
         private void Warrior_Click(object sender, RoutedEventArgs e)
         {
             String character = "Melee";
-            warriorClick++;
-            ChooseHero(character);
+            player = (Melee) ChooseHero(character);
+            Initialize();
         }
 
         private void Wizard_Click(object sender, RoutedEventArgs e)
         {
             String character = "Caster";
-            wizardClick++;
-            ChooseHero(character);
+            player = (Caster) ChooseHero(character);
+            Initialize();
         }
 
         private void Archer_Click(object sender, RoutedEventArgs e)
         {
             String character = "Ranged";
-            archerClick++;
-            ChooseHero(character);
+            player = (Ranged) ChooseHero(character);
+            Initialize();
         }
 
-
+        public void Initialize()
+        {
+            loadEnemy();
+            Instructions.Text = "Incoming Enemy. Use an ability to fight.";
+            PlayerHP.Text = player._health + "HP";
+            Attack.Visibility = Visibility.Visible;
+            Ability.Visibility = Visibility.Visible;
+        }
 
         public object ChooseHero(String character)
         {
-            if (warriorClick == 1 || wizardClick == 1 || archerClick == 1)
+            selection++;
+            if (selection == 1)
             {
                 if (Instructions.Text.Equals("Choose your hero."))
                 {
+                    NPC Player = null;
 
                     if (character.Equals("Melee"))
                     {
-                        Melee Player = new Melee();
+                        Player = new Melee();
                         Wizard.Visibility = Visibility.Collapsed;
                         Archer.Visibility = Visibility.Collapsed;
-                        Warrior.Margin = new Thickness(180,140,0,0);
+                        Warrior.Margin = new Thickness(180, 172, 0, 0);
                     }
                     else if (character.Equals("Ranged"))
                     {
-                        Ranged Player = new Ranged();
+                        Player = new Ranged();
                         Wizard.Visibility = Visibility.Collapsed;
                         Warrior.Visibility = Visibility.Collapsed;
-                        Archer.Margin = new Thickness(180, 140, 0, 0);
+                        Archer.Margin = new Thickness(180, 172, 0, 0);
                     }
                     else if (character.Equals("Caster"))
                     {
-                        Caster Player = new Caster();
+                        Player = new Caster();
                         Archer.Visibility = Visibility.Collapsed;
                         Warrior.Visibility = Visibility.Collapsed;
-                        Wizard.Margin = new Thickness(180, 140, 0, 0);
+                        Wizard.Margin = new Thickness(180, 172, 0, 0);
                     }
-                    Instructions.Text = "Incoming Enemy. Use an ability to fight.";
+                    Archer.IsEnabled = false;
+                    Warrior.IsEnabled = false;
+                    Wizard.IsEnabled = false;
+                    return Player;
                 }
+                
             }
             return null;
+
         }
 
+        public void loadEnemy()
+        {
+            if (player is Melee)
+            {
+                if (enemy2._alive)
+                {
+                    Archer.Visibility = Visibility.Visible;
+                    Archer.Margin = new Thickness(320, 172, 0, 0);
+                    EnemyHP.Text = enemy2._health + "HP";
 
+                } else if (enemy3._alive)
+                {
+                    Wizard.Visibility = Visibility.Visible;
+                    Wizard.Margin = new Thickness(320, 172, 0, 0);
+                    EnemyHP.Text = enemy3._health + "HP";
+                }
+            }
+            else if (player is Ranged)
+            {
+                if (enemy1._alive)
+                {
+                    Warrior.Visibility = Visibility.Visible;
+                    Warrior.Margin = new Thickness(320, 172, 0, 0);
+                    EnemyHP.Text = enemy2._health + "HP";
+                }
+                else if (enemy3._alive)
+                {
+                    Wizard.Visibility = Visibility.Visible;
+                    Wizard.Margin = new Thickness(320, 172, 0, 0);
+                    EnemyHP.Text = enemy3._health + "HP";
+                }
 
+            }
+            else if (player is Caster)
+            {
+                if (enemy1._alive)
+                {
+                    Warrior.Visibility = Visibility.Visible;
+                    Warrior.Margin = new Thickness(320, 172, 0, 0);
+                    EnemyHP.Text = enemy1._health + "HP";
+                }
+                else if (enemy2._alive)
+                {
+                    Archer.Visibility = Visibility.Visible;
+                    Archer.Margin = new Thickness(320, 172, 0, 0);
+                    EnemyHP.Text = enemy2._health + "HP";
+                }
+
+            }
+        }
+
+        private void updateHealth(NPC enemy)
+        {
+            PlayerHP.Text = player._health + "HP";
+            EnemyHP.Text = enemy2._health + "HP";
+        }
+
+        private void Attack_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Ability_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }

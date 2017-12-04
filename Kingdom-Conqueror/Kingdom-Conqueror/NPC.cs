@@ -10,7 +10,7 @@ namespace Kingdom_Conqueror
     {
         protected int _damage;
         public int _health { get; set; }
-        protected bool _alive { get; set; }
+        public bool _alive { get; set; }
 
         protected bool skillTwoUsed = false;
 

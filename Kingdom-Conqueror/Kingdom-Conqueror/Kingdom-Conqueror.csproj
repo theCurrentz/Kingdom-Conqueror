@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Game.cs" />
     <Compile Include="Ranged.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -111,6 +112,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Plunder_Battle_Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UI_Skillbutton_Brute_Attack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Attack.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

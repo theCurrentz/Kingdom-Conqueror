@@ -51,7 +51,23 @@
                 </Image.Source>
             </Image>
         </Button>
-        <TextBox x:Name="Instructions" Background="#00000000" Text="Choose your hero." HorizontalAlignment="Center" Height="72" Margin="81,95,90,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="421" BorderThickness="0" SnapsToDevicePixels="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+        <TextBox x:Name="Instructions" Background="Transparent" Text="Choose your hero." HorizontalAlignment="Center" Height="72" Margin="196,90,218,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" BorderThickness="0" SnapsToDevicePixels="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
+        <TextBox x:Name="PlayerHP" Background="Transparent" HorizontalAlignment="Left" Height="23" Margin="81,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderThickness="0" SnapsToDevicePixels="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" />
+        <TextBox x:Name="EnemyHP" Background="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="23" Margin="384,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="18"/>
 
+        <Button x:Name="Attack" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" Height="41" Margin="35,140,0,0" VerticalAlignment="Top" Width="45" Click="Attack_Click" Visibility="Collapsed">
+            <Image>
+                <Image.Source>
+                    <BitmapImage UriSource="Attack.png"/>
+                </Image.Source>
+            </Image>
+        </Button>
+        <Button x:Name="Ability" Style="{StaticResource ImageButtonStyle}" HorizontalAlignment="Left" Height="41" Margin="35,200,0,0" VerticalAlignment="Top" Width="45" Click="Ability_Click" Visibility="Collapsed">
+            <Image>
+                <Image.Source>
+                    <BitmapImage UriSource="UI_Skillbutton_Brute_Attack.png"/>
+                </Image.Source>
+            </Image>
+        </Button>
     </Grid>
 </Window>
