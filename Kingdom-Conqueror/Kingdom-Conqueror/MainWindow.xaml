@@ -22,7 +22,7 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Image x:Name="Background" HorizontalAlignment="Left" VerticalAlignment="Top"  Stretch="UniformToFill">
+        <Image x:Name="Background" HorizontalAlignment="Left" VerticalAlignment="Top"  Stretch="UniformToFill" Margin="0,-13,0,-81">
             <Image.Source>
                 <BitmapImage UriSource="Plunder_Battle_Background.jpg"/>
             </Image.Source>
