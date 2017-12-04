@@ -199,6 +199,10 @@ namespace Kingdom_Conqueror
             {                                     //displays that the attack/skill missed
                 MissedMessAsync();
             }
+            else
+            {
+                HitMessage();
+            }
             updateHealth(target);
             if (!target._alive)
             {
@@ -247,6 +251,10 @@ namespace Kingdom_Conqueror
                 {
                     MissedMessAsync();
                 }
+                else
+                {
+                    HitMessage();
+                }
                 updateHealth(target);
             }
             else
@@ -254,6 +262,10 @@ namespace Kingdom_Conqueror
                 if(!target.Attack(player))
                 {
                     MissedMessAsync();
+                }
+                else
+                {
+                    HitMessage();
                 }
                 updateHealth(target);
             }
