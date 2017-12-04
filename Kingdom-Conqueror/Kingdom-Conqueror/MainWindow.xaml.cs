@@ -32,7 +32,7 @@ namespace Kingdom_Conqueror
         Ranged enemy2 = new Ranged();
         Caster enemy3 = new Caster();
         NPC player = null;
-        NPC target = null; // to help with the attack section
+        NPC target; // to help with the attack section
 
 
 
@@ -109,7 +109,6 @@ namespace Kingdom_Conqueror
 
         public void loadEnemy()
         {
-            NPC target = null;
             if (player is Melee)
             {
                 if (enemy2._alive)
@@ -168,17 +167,19 @@ namespace Kingdom_Conqueror
         private void updateHealth(NPC enemy)
         {
             PlayerHP.Text = player._health + "HP";
-            EnemyHP.Text = enemy2._health + "HP";
+            EnemyHP.Text = target._health + "HP";
         }
 
         private void Attack_Click(object sender, RoutedEventArgs e)
         {
-            player.Attack(target);                
+            player.Attack(target);
+            updateHealth(target);
         }
 
         private void Ability_Click(object sender, RoutedEventArgs e)
         {          
-            player.Skill(target);            
+            player.Skill(target);
+            updateHealth(target);
         }
     }
 

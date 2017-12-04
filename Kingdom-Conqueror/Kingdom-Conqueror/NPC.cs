@@ -22,12 +22,12 @@ namespace Kingdom_Conqueror
 
         public void Attack(NPC enemy)
         {
-            enemy.Damaged(this._damage);
+            enemy.Damaged(_damage);
         }
 
         public void Damaged(int ammount)
         {
-            _health -= ammount;
+            _health = _health - ammount;
             if (_health <= 0)
             {
                 Killed();
@@ -36,7 +36,7 @@ namespace Kingdom_Conqueror
 
         public void Skill(NPC enemy)
         {
-            enemy._health -= this._damage;
+            enemy.Damaged(this._damage);
         }
 
         public void Killed()
