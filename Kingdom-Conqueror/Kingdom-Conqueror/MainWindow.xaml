@@ -74,6 +74,8 @@
             </Image>
         </Button>
         <TextBlock x:Name="MissedMessage" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Missed!" VerticalAlignment="Top" Margin="258,214,0,0" Foreground="Red" FontFamily="Old English Text MT" FontSize="22" Visibility="Hidden"/>
-        <TextBlock x:Name="HitMessage_" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Hit!" VerticalAlignment="Top" Margin="258,213,0,0" Foreground="Red" FontFamily="Old English Text MT" FontSize="22" Visibility="Hidden"/>
+        <TextBlock x:Name="HitMessage_" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Hit!" VerticalAlignment="Top" Margin="272,150,0,0" Foreground="Red" FontFamily="Old English Text MT" FontSize="22" Visibility="Hidden"/>
+        <TextBlock x:Name="SkillName" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Skill" VerticalAlignment="Top" Margin="48,219,0,0" FontSize="18" Foreground="#FFFF0101" Visibility="Hidden"/>
+        <Button x:Name="Exit" Content="Quit?" HorizontalAlignment="Left" Margin="489,219,0,0" VerticalAlignment="Top" Width="75" Click="ReplayButton_Click" Visibility="Hidden"/>
     </Grid>
 </Window>

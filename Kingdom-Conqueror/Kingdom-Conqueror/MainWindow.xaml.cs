@@ -61,6 +61,7 @@ namespace Kingdom_Conqueror
         public void Initialize()
         {
             loadEnemy();
+            SkillName.Visibility = Visibility.Visible;
             Instructions.Text = "Battle Begins.";
             PlayerHP.Text = player._health + "HP";
             Attack.Visibility = Visibility.Visible;
@@ -179,6 +180,10 @@ namespace Kingdom_Conqueror
                 }
 
             }
+            else
+            {
+                endGame();
+            }
         }
 
         private void updateHealth(NPC enemy)
@@ -221,7 +226,7 @@ namespace Kingdom_Conqueror
             }
             else
             {                
-                NPC_Attack();
+                NPC_AttackAsync();
             }
         }
 
@@ -236,6 +241,7 @@ namespace Kingdom_Conqueror
                 else
                 {
                     HitMessage();
+                    Ability.Visibility = Visibility.Hidden;
                 }
             }
             updateHealth(target);
@@ -245,13 +251,14 @@ namespace Kingdom_Conqueror
             }
             else
             {
-                NPC_Attack();
+                NPC_AttackAsync();
             }
 
         }
 
-        private void NPC_Attack()
+        private async Task NPC_AttackAsync()
         {
+            await Task.Delay(150);
             if (target.skillUsed == false && target._health < 40)
             {
                 if(!target.Skill(player))
@@ -281,15 +288,16 @@ namespace Kingdom_Conqueror
         private async Task HitMessage()
         {
             HitMessage_.Visibility = Visibility.Visible;      
-            await Task.Delay(1000);
-            HitMessage_.Visibility = Visibility.Hidden;
+            await Task.Delay(150);
+            HitMessage_.Visibility = Visibility.Hidden;            
         }
 
         private async Task MissedMessAsync()
         {
             MissedMessage.Visibility = Visibility.Visible;      //displays that the attack/skill missed
-            await Task.Delay(1000);
+            await Task.Delay(150);
             MissedMessage.Visibility = Visibility.Hidden;
+            
         }
 
         private void endGame()
@@ -303,6 +311,13 @@ namespace Kingdom_Conqueror
             EnemyHP.Visibility = Visibility.Collapsed;
             Attack.Visibility = Visibility.Collapsed;
             Ability.Visibility = Visibility.Collapsed;
+            SkillName.Visibility = Visibility.Collapsed;
+            Exit.Visibility = Visibility.Visible;
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Close();
         }
     }
 
