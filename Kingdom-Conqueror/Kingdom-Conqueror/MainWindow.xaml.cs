@@ -26,7 +26,7 @@ namespace Kingdom_Conqueror
             InitializeComponent();            
         }
 
-        int selection = 0;
+        int selection = 0;        
 
         Game match = new Game();
         Melee enemy1 = new Melee();
@@ -75,13 +75,13 @@ namespace Kingdom_Conqueror
             {
                 if (Instructions.Text.Equals("Choose your hero."))
                 {
-                    NPC Player = null;
+                    NPC Player = null;                    
 
                     if (character.Equals("Melee"))
                     {
                         Player = new Melee();
                         Wizard.Visibility = Visibility.Collapsed;
-                        Archer.Visibility = Visibility.Collapsed;
+                        Archer.Visibility = Visibility.Collapsed;                        
                         Warrior.Margin = new Thickness(180, 172, 0, 0);
                     }
                     else if (character.Equals("Ranged"))
@@ -111,6 +111,10 @@ namespace Kingdom_Conqueror
 
         public void loadEnemy()
         {
+            // to have the enemy facing the player
+            ScaleTransform flip = new ScaleTransform();
+            flip.ScaleX = -1;
+
             player.ResetHealth(); 
             if (player is Melee)
             {
@@ -118,6 +122,7 @@ namespace Kingdom_Conqueror
                 {
                     Archer.Visibility = Visibility.Visible;
                     Archer.Margin = new Thickness(320, 172, 0, 0);
+                    Archer.RenderTransform = flip;
                     EnemyHP.Text = enemy2._health + "HP";
                     target = enemy2;
 
@@ -126,6 +131,7 @@ namespace Kingdom_Conqueror
                     Archer.Visibility = Visibility.Collapsed;                                      
                     Wizard.Visibility = Visibility.Visible;
                     Wizard.Margin = new Thickness(320, 172, 0, 0);
+                    Wizard.RenderTransform = flip;
                     EnemyHP.Text = enemy3._health + "HP";
                     target = enemy3;
                 }
@@ -140,6 +146,7 @@ namespace Kingdom_Conqueror
                 {
                     Warrior.Visibility = Visibility.Visible;
                     Warrior.Margin = new Thickness(320, 172, 0, 0);
+                    Warrior.RenderTransform = flip;
                     EnemyHP.Text = enemy2._health + "HP";
                     target = enemy1;
                 }
@@ -148,6 +155,7 @@ namespace Kingdom_Conqueror
                     Warrior.Visibility = Visibility.Collapsed;                    
                     Wizard.Visibility = Visibility.Visible;
                     Wizard.Margin = new Thickness(320, 172, 0, 0);
+                    Wizard.RenderTransform = flip;
                     EnemyHP.Text = enemy3._health + "HP";
                     target = enemy3;
                 }
@@ -163,6 +171,7 @@ namespace Kingdom_Conqueror
                 {
                     Warrior.Visibility = Visibility.Visible;
                     Warrior.Margin = new Thickness(320, 172, 0, 0);
+                    Warrior.RenderTransform = flip;
                     EnemyHP.Text = enemy1._health + "HP";
                     target = enemy1;
                 }
@@ -171,6 +180,7 @@ namespace Kingdom_Conqueror
                     Warrior.Visibility = Visibility.Collapsed;
                     Archer.Visibility = Visibility.Visible;
                     Archer.Margin = new Thickness(320, 172, 0, 0);
+                    Archer.RenderTransform = flip;
                     EnemyHP.Text = enemy2._health + "HP";
                     target = enemy2;
                 }
