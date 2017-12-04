@@ -121,8 +121,8 @@ namespace Kingdom_Conqueror
                 if (enemy2._alive)
                 {
                     Archer.Visibility = Visibility.Visible;
-                    Archer.Margin = new Thickness(320, 172, 0, 0);
                     Archer.RenderTransform = flip;
+                    Archer.Margin = new Thickness(420, 172, 0, 0);
                     EnemyHP.Text = enemy2._health + "HP";
                     target = enemy2;
 
@@ -130,8 +130,8 @@ namespace Kingdom_Conqueror
                 {
                     Archer.Visibility = Visibility.Collapsed;                                      
                     Wizard.Visibility = Visibility.Visible;
-                    Wizard.Margin = new Thickness(320, 172, 0, 0);
                     Wizard.RenderTransform = flip;
+                    Wizard.Margin = new Thickness(420, 172, 0, 0);
                     EnemyHP.Text = enemy3._health + "HP";
                     target = enemy3;
                 }
@@ -145,8 +145,8 @@ namespace Kingdom_Conqueror
                 if (enemy1._alive)
                 {
                     Warrior.Visibility = Visibility.Visible;
-                    Warrior.Margin = new Thickness(320, 172, 0, 0);
                     Warrior.RenderTransform = flip;
+                    Warrior.Margin = new Thickness(420, 172, 0, 0);
                     EnemyHP.Text = enemy2._health + "HP";
                     target = enemy1;
                 }
@@ -154,8 +154,8 @@ namespace Kingdom_Conqueror
                 {
                     Warrior.Visibility = Visibility.Collapsed;                    
                     Wizard.Visibility = Visibility.Visible;
-                    Wizard.Margin = new Thickness(320, 172, 0, 0);
                     Wizard.RenderTransform = flip;
+                    Wizard.Margin = new Thickness(420, 172, 0, 0);
                     EnemyHP.Text = enemy3._health + "HP";
                     target = enemy3;
                 }
@@ -170,8 +170,8 @@ namespace Kingdom_Conqueror
                 if (enemy1._alive)
                 {
                     Warrior.Visibility = Visibility.Visible;
-                    Warrior.Margin = new Thickness(320, 172, 0, 0);
                     Warrior.RenderTransform = flip;
+                    Warrior.Margin = new Thickness(420, 172, 0, 0);
                     EnemyHP.Text = enemy1._health + "HP";
                     target = enemy1;
                 }
@@ -179,8 +179,8 @@ namespace Kingdom_Conqueror
                 {
                     Warrior.Visibility = Visibility.Collapsed;
                     Archer.Visibility = Visibility.Visible;
-                    Archer.Margin = new Thickness(320, 172, 0, 0);
                     Archer.RenderTransform = flip;
+                    Archer.Margin = new Thickness(420, 172, 0, 0);
                     EnemyHP.Text = enemy2._health + "HP";
                     target = enemy2;
                 }
@@ -252,6 +252,7 @@ namespace Kingdom_Conqueror
                 {
                     HitMessage();
                     Ability.Visibility = Visibility.Hidden;
+                    SkillName.Visibility = Visibility.Hidden;
                 }
             }
             updateHealth(target);
@@ -269,7 +270,7 @@ namespace Kingdom_Conqueror
         private async Task NPC_AttackAsync()
         {
             await Task.Delay(150);
-            if (target.skillUsed == false && target._health < 40)
+            if (!target.skillUsed && target._health < 40)
             {
                 if(!target.Skill(player))
                 {
@@ -324,8 +325,8 @@ namespace Kingdom_Conqueror
             SkillName.Visibility = Visibility.Collapsed;
             Exit.Visibility = Visibility.Visible;
         }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
+        
+        private void ReplayButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Close();
         }
