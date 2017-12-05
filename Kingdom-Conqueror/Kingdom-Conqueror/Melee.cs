@@ -22,7 +22,6 @@ namespace Kingdom_Conqueror
             skillUsed = false;
         }
 
-
         // Pummel
         public override bool Skill(NPC enemy)
         {
