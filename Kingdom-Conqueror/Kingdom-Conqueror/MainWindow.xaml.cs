@@ -85,6 +85,7 @@ namespace Kingdom_Conqueror
                     if (character.Equals("Melee"))
                     {
                         Player = new Melee();
+                        SkillName.Text = "Pummel";
                         Wizard.Visibility = Visibility.Collapsed;
                         Archer.Visibility = Visibility.Collapsed;                        
                         Warrior.Margin = new Thickness(180, 172, 0, 0);
@@ -92,6 +93,7 @@ namespace Kingdom_Conqueror
                     else if (character.Equals("Ranged"))
                     {
                         Player = new Ranged();
+                        SkillName.Text = "Dual Shot";
                         Wizard.Visibility = Visibility.Collapsed;
                         Warrior.Visibility = Visibility.Collapsed;
                         Archer.Margin = new Thickness(180, 172, 0, 0);
@@ -99,6 +101,7 @@ namespace Kingdom_Conqueror
                     else if (character.Equals("Caster"))
                     {
                         Player = new Caster();
+                        SkillName.Text = "Heal";
                         Archer.Visibility = Visibility.Collapsed;
                         Warrior.Visibility = Visibility.Collapsed;
                         Wizard.Margin = new Thickness(180, 172, 0, 0);
