@@ -22,6 +22,7 @@ namespace Kingdom_Conqueror
             skillUsed = false;
         }
 
+
         // Heal
         public override bool Skill(NPC enemy)   //still targets enemy so it can be an override vs overload method
         {
