@@ -23,10 +23,11 @@ namespace Kingdom_Conqueror
     {
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
-        int selection = 0;        
+        int selection = 0;
+        int ini = 0;
 
         Game match = new Game();
         Melee enemy1 = new Melee();
@@ -40,32 +41,36 @@ namespace Kingdom_Conqueror
         private void Warrior_Click(object sender, RoutedEventArgs e)
         {
             String character = "Melee";
-            player = (Melee) ChooseHero(character);
+            player = (Melee)ChooseHero(character);
             Initialize();
         }
 
         private void Wizard_Click(object sender, RoutedEventArgs e)
         {
             String character = "Caster";
-            player = (Caster) ChooseHero(character);
+            player = (Caster)ChooseHero(character);
             Initialize();
         }
 
         private void Archer_Click(object sender, RoutedEventArgs e)
         {
             String character = "Ranged";
-            player = (Ranged) ChooseHero(character);
+            player = (Ranged)ChooseHero(character);
             Initialize();
         }
 
         public void Initialize()
         {
+            ini++;
             loadEnemy();
-            SkillName.Visibility = Visibility.Visible;
-            Instructions.Text = "Battle Begins.";
-            PlayerHP.Text = player._health + "HP";
+            if (ini == 1)
+            {
+                Instructions.Text = "Battle Begins.";
+                SkillName.Visibility = Visibility.Visible;
+            }
             Attack.Visibility = Visibility.Visible;
             Ability.Visibility = Visibility.Visible;
+            PlayerHP.Text = player._health + "HP";
         }
 
         public object ChooseHero(String character)
@@ -312,14 +317,21 @@ namespace Kingdom_Conqueror
         }
 
         private void endGame()
-        {
-            Instructions.Text = "Game Over.";
+        {   if (!player._alive) {
+                Instructions.Text = "Game Over.";
+            }
+            else
+            {
+                Instructions.Text = "You Won!";
+            }
             Archer.Visibility = Visibility.Collapsed;
             Warrior.Visibility = Visibility.Collapsed;
             Wizard.Visibility = Visibility.Collapsed;
             Archer.Visibility = Visibility.Collapsed;
             PlayerHP.Visibility = Visibility.Collapsed;
             EnemyHP.Visibility = Visibility.Collapsed;
+            Attack.IsEnabled = false;
+            Ability.IsEnabled = false;
             Attack.Visibility = Visibility.Collapsed;
             Ability.Visibility = Visibility.Collapsed;
             SkillName.Visibility = Visibility.Collapsed;
