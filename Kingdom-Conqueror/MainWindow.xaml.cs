@@ -31,6 +31,7 @@ namespace Kingdom_Conqueror
             InitializeComponent();
         }
 
+
         int selection = 0;
         int ini = 0;
 
